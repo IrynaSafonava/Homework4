@@ -1,12 +1,15 @@
-package by.it_academy.parser;
+package by.it_academy.parser.DOM;
 
 import org.w3c.dom.Document;
-import org.xml.sax.SAXException;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import java.io.IOException;
+import java.io.File;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class DomParserUtils {
 
@@ -25,11 +28,19 @@ public class DomParserUtils {
         Document document = null;
         if (null != documentBuilder) {
             try {
-                document = documentBuilder.parse(ClassLoader.getSystemResourceAsStream(path));
+              document = documentBuilder.parse(new File(path));
             } catch (Exception e) {
                 System.out.println("Error while parse doc");
             }
         }
         return document;
+    }
+
+    public static NodeList getNodeList(Document document){
+        return document.getDocumentElement().getChildNodes();
+    }
+    public static Stream<Node> getNodeListStream(NodeList nodeList) {
+        return IntStream.range(0, nodeList.getLength())
+                .mapToObj(nodeList::item);
     }
 }

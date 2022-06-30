@@ -14,10 +14,12 @@ import java.util.stream.Stream;
 public class DomParserUtils {
 
     public static DocumentBuilder createDocumentBuilder() {
-        DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
+        DocumentBuilderFactory documentBuilderFactory =
+                DocumentBuilderFactory.newInstance();
         try {
             return documentBuilderFactory.newDocumentBuilder();
         } catch (ParserConfigurationException e) {
+            e.printStackTrace();
             System.out.println("Error while creating");
             return null;
         }
@@ -28,19 +30,11 @@ public class DomParserUtils {
         Document document = null;
         if (null != documentBuilder) {
             try {
-              document = documentBuilder.parse(new File(path));
+                document = documentBuilder.parse(new File(path));
             } catch (Exception e) {
                 System.out.println("Error while parse doc");
             }
         }
         return document;
-    }
-
-    public static NodeList getNodeList(Document document){
-        return document.getDocumentElement().getChildNodes();
-    }
-    public static Stream<Node> getNodeListStream(NodeList nodeList) {
-        return IntStream.range(0, nodeList.getLength())
-                .mapToObj(nodeList::item);
     }
 }

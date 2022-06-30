@@ -37,4 +37,14 @@ public class Contacts {
     public void setUrl(String url) {
         this.url = url;
     }
+
+    @Override
+    public String toString() {
+        return "{" +
+                "address='" + address + '\'' +
+                ", tel='" + tel + '\'' +
+                ", email='" + email + '\'' +
+                ", url='" + url + '\'' +
+                '}';
+    }
 }

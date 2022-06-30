@@ -1,17 +1,20 @@
 package by.it_academy.entity;
 
+import java.util.List;
+
 public class Article {
-    private int id;
+
+    private String id;
     private String title;
     private String author;
     private String url;
-    private String[] hotkey;
+    private List<Hotkeys> hotkeys;
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -39,11 +42,22 @@ public class Article {
         this.url = url;
     }
 
-    public String[] getHotkey() {
-        return hotkey;
+    public List<Hotkeys> getHotkey() {
+        return hotkeys;
     }
 
-    public void setHotkey(String[] hotkey) {
-        this.hotkey = hotkey;
+    public void setHotkey(List<Hotkeys> hotkeys) {
+        this.hotkeys = hotkeys;
+    }
+
+    @Override
+    public String toString() {
+        return "Article {" +
+                "id='" + id + '\'' +
+                ", title='" + title + '\'' +
+                ", author='" + author + '\'' +
+                ", url='" + url + '\'' +
+                ", hotkeys=" + hotkeys +
+                '}';
     }
 }

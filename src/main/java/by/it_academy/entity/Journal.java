@@ -1,11 +1,11 @@
 package by.it_academy.entity;
 
-import java.util.Arrays;
+import java.util.List;
 
 public class Journal {
     private String title;
-    private String contacts;
-    private String articles;
+    private Contacts contacts;
+    private List<Article> articles;
 
     public String getTitle() {
         return title;
@@ -15,28 +15,28 @@ public class Journal {
         this.title = title;
     }
 
-    public String getContacts() {
+    public Contacts getContacts() {
         return contacts;
     }
 
-    public void setContacts(String contacts) {
+    public void setContacts(Contacts contacts) {
         this.contacts = contacts;
     }
 
-    public String getArticles() {
+    public List<Article> getArticles() {
         return articles;
     }
 
-    public void setArticles(String articles) {
+    public void setArticles(List<Article> articles) {
         this.articles = articles;
     }
 
     @Override
     public String toString() {
-        return "Journal{" +
+        return "Journal \n {" +
                 "title='" + title + '\'' +
-                ", contacts=" + contacts +
-                ", articles=" + articles +
+                ", \n contacts=" + contacts +
+                ", \n articles=" + articles +
                 '}';
     }
 }

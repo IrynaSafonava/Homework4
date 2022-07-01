@@ -8,7 +8,7 @@ public class Article {
     private String title;
     private String author;
     private String url;
-    private List<Hotkeys> hotkeys;
+    private List<Hotkey> hotkeys;
 
     public String getId() {
         return id;
@@ -42,11 +42,11 @@ public class Article {
         this.url = url;
     }
 
-    public List<Hotkeys> getHotkey() {
+    public List<Hotkey> getHotkeys() {
         return hotkeys;
     }
 
-    public void setHotkey(List<Hotkeys> hotkeys) {
+    public void setHotkeys(List<Hotkey> hotkeys) {
         this.hotkeys = hotkeys;
     }
 

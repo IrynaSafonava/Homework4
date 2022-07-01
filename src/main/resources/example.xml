@@ -13,9 +13,9 @@
             <author>Jhon</author>
             <url>/article1</url>
             <hotkeys>
-                <hotkeys>language</hotkeys>
-                <hotkeys>marckup</hotkeys>
-                <hotkeys>hypertext</hotkeys>
+                <hotkey>language</hotkey>
+                <hotkey>marckup</hotkey>
+                <hotkey>hypertext</hotkey>
             </hotkeys>
         </article>
         <article ID="2">
@@ -23,8 +23,8 @@
             <author>Mike</author>
             <url>/article2</url>
             <hotkeys>
-                <hotkeys>marckup</hotkeys>
-                <hotkeys>hypertext</hotkeys>
+                <hotkey>marckup</hotkey>
+                <hotkey>hypertext</hotkey>
             </hotkeys>
         </article>
     </articles>

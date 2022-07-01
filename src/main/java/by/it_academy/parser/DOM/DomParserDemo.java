@@ -2,7 +2,7 @@ package by.it_academy.parser.DOM;
 
 import by.it_academy.entity.Article;
 import by.it_academy.entity.Contacts;
-import by.it_academy.entity.Hotkeys;
+import by.it_academy.entity.Hotkey;
 import by.it_academy.entity.Journal;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -14,7 +14,7 @@ import java.util.List;
 public class DomParserDemo {
 
     private static final String XML_PATH = "src/main/resources/example.xml";
-    private static Journal journal = new Journal();
+    private static final Journal journal = new Journal();
 
     public static void main(String[] args) {
         Document document = DomParserUtils.parseXmlDocument(XML_PATH);
@@ -28,7 +28,7 @@ public class DomParserDemo {
                 setJournalWithXmlNodeValues(journal, nodeListRoot.item(i));
             }
         }
-        System.out.println(journal.toString());
+        System.out.println(journal);
     }
 
     public static void setJournalWithXmlNodeValues(Journal journal, Node node) {
@@ -37,15 +37,9 @@ public class DomParserDemo {
                 .getTextContent()
                 .trim();
         switch (node.getNodeName()) {
-            case "title":
-                journal.setTitle(content);
-                break;
-            case "contacts":
-                journal.setContacts(setContactsWithXmlNodeValues(node));
-                break;
-            case "articles":
-                journal.setArticles(serArticlesWithXmlNodeValues(node));
-                break;
+            case "title" -> journal.setTitle(content);
+            case "contacts" -> journal.setContacts(setContactsWithXmlNodeValues(node));
+            case "articles" -> journal.setArticles(setArticlesWithXmlNodeValues(node));
         }
     }
 
@@ -66,22 +60,14 @@ public class DomParserDemo {
                 .getTextContent()
                 .trim();
         switch (node.getNodeName()) {
-            case "address":
-                contacts.setAddress(content);
-                break;
-            case "tel":
-                contacts.setTel(content);
-                break;
-            case "email":
-                contacts.setEmail(content);
-                break;
-            case "url":
-                contacts.setUrl(content);
-                break;
+            case "address" -> contacts.setAddress(content);
+            case "tel" -> contacts.setTel(content);
+            case "email" -> contacts.setEmail(content);
+            case "url" -> contacts.setUrl(content);
         }
     }
 
-    public static List<Article> serArticlesWithXmlNodeValues(Node node) {
+    public static List<Article> setArticlesWithXmlNodeValues(Node node) {
         List<Article> articles = new ArrayList<>();
         NodeList articlesChildNodeList = node.getChildNodes();
         for (int i = 0; i < articlesChildNodeList.getLength(); i++) {
@@ -106,27 +92,19 @@ public class DomParserDemo {
                 .getTextContent()
                 .trim();
         switch (node.getNodeName()) {
-            case "title":
-                article.setTitle(content);
-                break;
-            case "author":
-                article.setAuthor(content);
-                break;
-            case "url":
-                article.setUrl(content);
-                break;
-            case "hotkeys":
-                article.setHotkey(setHotkeysWithXmlNodeValues(node));
-                break;
+            case "title" -> article.setTitle(content);
+            case "author" -> article.setAuthor(content);
+            case "url" -> article.setUrl(content);
+            case "hotkeys" -> article.setHotkeys(setHotkeysWithXmlNodeValues(node));
         }
     }
 
-    public static List<Hotkeys> setHotkeysWithXmlNodeValues(Node node) {
-        List<Hotkeys> hotkeys = new ArrayList<>();
+    public static List<Hotkey> setHotkeysWithXmlNodeValues(Node node) {
+        List<Hotkey> hotkeys = new ArrayList<>();
         NodeList hotkeysChildNodeList = node.getChildNodes();
         for (int i = 0; i < hotkeysChildNodeList.getLength(); i++) {
             if (hotkeysChildNodeList.item(i) instanceof Element) {
-                Hotkeys hotkey = new Hotkeys();
+                Hotkey hotkey = new Hotkey();
                 setHotkeysWithXmlChildNodeValues(hotkey, hotkeysChildNodeList.item(i));
                 hotkeys.add(hotkey);
             }
@@ -134,11 +112,11 @@ public class DomParserDemo {
         return hotkeys;
     }
 
-    public static void setHotkeysWithXmlChildNodeValues(Hotkeys hotkeys, Node node) {
+    public static void setHotkeysWithXmlChildNodeValues(Hotkey hotkey, Node node) {
         String content = node
                 .getLastChild()
                 .getTextContent()
                 .trim();
-        hotkeys.setHotkey(content);
+        hotkey.setHotkey(content);
     }
 }

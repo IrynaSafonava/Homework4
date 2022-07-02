@@ -11,27 +11,27 @@ import org.w3c.dom.NodeList;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DomParserDemo {
+public class DOMParser {
 
     private static final String XML_PATH = "src/main/resources/example.xml";
     private static final Journal journal = new Journal();
 
-    public static void main(String[] args) {
-        Document document = DomParserUtils.parseXmlDocument(XML_PATH);
+    public static void parseWithDom() {
+        Document document = DOMParserUtils.parseXmlDocument(XML_PATH);
         NodeList nodeListRoot = document.getDocumentElement().getChildNodes();
-        setJournalWithXmlValues(nodeListRoot);
+        setJournalWithXmlNodeValues(nodeListRoot);
     }
 
-    public static void setJournalWithXmlValues(NodeList nodeListRoot) {
+    public static void setJournalWithXmlNodeValues(NodeList nodeListRoot) {
         for (int i = 0; i < nodeListRoot.getLength(); i++) {
             if (nodeListRoot.item(i) instanceof Element) {
-                setJournalWithXmlNodeValues(journal, nodeListRoot.item(i));
+                setJournalWithXmlChildNodeValues(journal, nodeListRoot.item(i));
             }
         }
         System.out.println(journal);
     }
 
-    public static void setJournalWithXmlNodeValues(Journal journal, Node node) {
+    public static void setJournalWithXmlChildNodeValues(Journal journal, Node node) {
         String content = node
                 .getLastChild()
                 .getTextContent()

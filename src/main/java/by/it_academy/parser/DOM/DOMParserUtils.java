@@ -1,17 +1,13 @@
 package by.it_academy.parser.DOM;
 
 import org.w3c.dom.Document;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
-public class DomParserUtils {
+public class DOMParserUtils {
 
     public static DocumentBuilder createDocumentBuilder() {
         DocumentBuilderFactory documentBuilderFactory =

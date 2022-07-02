@@ -8,7 +8,7 @@ public class Article {
     private String title;
     private String author;
     private String url;
-    private List<Hotkey> hotkeys;
+    private List<Hotkey> hotkey;
 
     public String getId() {
         return id;
@@ -43,21 +43,21 @@ public class Article {
     }
 
     public List<Hotkey> getHotkeys() {
-        return hotkeys;
+        return hotkey;
     }
 
     public void setHotkeys(List<Hotkey> hotkeys) {
-        this.hotkeys = hotkeys;
+        this.hotkey = hotkeys;
     }
 
     @Override
     public String toString() {
-        return "Article {" +
+        return "Article{" +
                 "id='" + id + '\'' +
                 ", title='" + title + '\'' +
                 ", author='" + author + '\'' +
                 ", url='" + url + '\'' +
-                ", hotkeys=" + hotkeys +
+                ", hotkeys=" + hotkey +
                 '}';
     }
 }

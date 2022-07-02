@@ -1,14 +1,18 @@
 package by.it_academy.demo;
 
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
+import by.it_academy.parser.DOM.DOMParser;
+import by.it_academy.parser.StAX.StAXParser;
 
-import static by.it_academy.parser.DOM.DomParserUtils.parseXmlDocument;
+import javax.xml.stream.XMLStreamException;
+import java.io.FileNotFoundException;
 
 public class Runner {
-
-
-
+    public static void main(String[] args) throws XMLStreamException, FileNotFoundException {
+        System.out.println("\n==============================");
+        System.out.println("Journal parsed via DOM parser \n");
+        DOMParser.parseWithDom();
+        System.out.println("\n==============================");
+        System.out.println("Journal parsed via StAX parser \n");
+        StAXParser.parseXMLWithStAX();
+    }
 }
